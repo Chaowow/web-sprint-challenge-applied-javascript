@@ -11,6 +11,25 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+
+  const divWrapper = document.createElement('div');
+  const spanDate = document.createElement('span');
+  const heading = document.createElement('h1');
+  const spanTemp = document.createElement('span');
+
+  divWrapper.appendChild(spanDate);
+  divWrapper.appendChild(heading);
+  divWrapper.appendChild(spanTemp);
+
+  divWrapper.classList.add('header');
+  spanDate.classList.add('date');
+  spanTemp.classList.add('temp');
+
+  spanDate.textContent = date;
+  heading.textContent = title;
+  spanTemp.textContent = temp;
+
+  return divWrapper;
 }
 
 const headerAppender = (selector) => {
@@ -26,6 +45,11 @@ const headerAppender = (selector) => {
   // We are taking care of passing in the correct selector on line 16,
   // so all that you need to do is pass it into the querySelector method
   // for the tests to work!
+  const headerComponent = Header('Sprint Challenge', 'April 11th, 2023', '41F');
+
+  const targetElment = document.querySelector(selector);
+
+  targetElment.appendChild(headerComponent)
 }
 
 export { Header, headerAppender }
